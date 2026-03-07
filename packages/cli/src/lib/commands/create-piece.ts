@@ -64,8 +64,8 @@ const scaffoldPiece = async (
     name: packageName,
     version: '0.0.1',
     type: 'commonjs',
-    main: './dist/src/index.js',
-    types: './dist/src/index.d.ts',
+    main: './src/index.js',
+    types: './src/index.d.ts',
     dependencies: {
       '@activepieces/pieces-common': 'workspace:*',
       '@activepieces/pieces-framework': 'workspace:*',
