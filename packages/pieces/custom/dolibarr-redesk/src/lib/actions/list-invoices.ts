@@ -31,17 +31,23 @@ export const listInvoices = createAction({
       required: false,
       defaultValue: 50,
     }),
+    page: Property.Number({ displayName: 'Page (pagination)', required: false, defaultValue: 0 }),
+    sortfield: Property.ShortText({ displayName: 'Champ de tri', required: false, defaultValue: 't.rowid' }),
+    sortorder: Property.StaticDropdown({ displayName: 'Ordre de tri', required: false, options: { options: [{ label: 'Décroissant', value: 'DESC' }, { label: 'Croissant', value: 'ASC' }] }, defaultValue: 'DESC' }),
+    sqlfilters: Property.ShortText({ displayName: 'Filtres SQL', description: "Filtre avancé, ex: (t.ref:like:'FAC%')", required: false }),
   },
   async run(context) {
-    const { status, socid, limit } = context.propsValue;
+    const { status, socid, limit, page, sortfield, sortorder, sqlfilters } = context.propsValue;
     const queryParams: Record<string, string> = {
       limit: String(limit ?? 50),
-      sortfield: 'rowid',
-      sortorder: 'DESC',
+      page: String(page ?? 0),
+      sortfield: sortfield ?? 't.rowid',
+      sortorder: sortorder ?? 'DESC',
     };
 
     if (status) queryParams['status'] = status;
     if (socid) queryParams['thirdparty_ids'] = socid;
+    if (sqlfilters) queryParams['sqlfilters'] = sqlfilters;
 
     return dolibarrRequest({
       auth: context.auth.props,

@@ -5,6 +5,29 @@ import { dolibarrRequest } from './client';
 
 const WEBHOOK_ID_KEY = 'dolibarr_webhook_id';
 
+function tryParseJson(value: unknown): unknown {
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  try {
+    return JSON.parse(value);
+  }
+  catch {
+    return value;
+  }
+}
+
+function extractPayload(body: unknown): unknown {
+  if (typeof body === 'object' && body !== null) {
+    const parsedBody = body as Record<string, unknown>;
+    // Dolibarr enveloppe le payload dans { triggercode, object }.
+    return parsedBody['object'] ?? parsedBody;
+  }
+
+  return body;
+}
+
 async function registerWebhook({
   auth,
   webhookUrl,
@@ -106,11 +129,20 @@ export function createDolibarrTrigger({
     },
 
     async run(context) {
-      const body = context.payload.body as Record<string, unknown>;
-      // Dolibarr enveloppe le payload dans { triggercode, object }
-      // On retourne l'objet métier si présent, sinon tout le body
-      const payload = body['object'] ?? body;
-      return [payload];
+      // Priorite au rawBody: il preserve le JSON brut meme si le body est mal parse.
+      const rawBody = context.payload.rawBody;
+      let rawCandidate: unknown = rawBody;
+      if (typeof Buffer !== 'undefined' && Buffer.isBuffer(rawCandidate)) {
+        rawCandidate = rawCandidate.toString('utf8');
+      }
+
+      const parsedRawBody = tryParseJson(rawCandidate);
+      if (parsedRawBody !== rawCandidate) {
+        return [extractPayload(parsedRawBody)];
+      }
+
+      const parsedBody = tryParseJson(context.payload.body);
+      return [extractPayload(parsedBody)];
     },
   });
 }
