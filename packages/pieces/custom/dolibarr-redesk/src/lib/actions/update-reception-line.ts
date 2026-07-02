@@ -1,0 +1,19 @@
+import { createAction, Property } from '@activepieces/pieces-framework';
+import { HttpMethod } from '@activepieces/pieces-common';
+import { dolibarrAuth } from '../auth';
+import { dolibarrRequest } from '../common/client';
+
+export const updateReceptionLine = createAction({
+  auth: dolibarrAuth,
+  name: 'update_reception_line',
+  displayName: "Mettre à jour une ligne de réception",
+  description: "Met à jour une ligne d'une réception.",
+  props: {
+    id: Property.ShortText({ displayName: 'ID Réception', required: true }),
+    lineid: Property.ShortText({ displayName: 'ID Ligne', required: true }),
+    body: Property.Json({ displayName: 'Corps de la requête (JSON)', required: true }),
+  },
+  async run(context) {
+    return dolibarrRequest({ auth: context.auth.props, method: HttpMethod.PUT, endpoint: `/receptions/${context.propsValue.id}/lines/${context.propsValue.lineid}`, body: context.propsValue.body as Record<string, unknown> });
+  },
+});

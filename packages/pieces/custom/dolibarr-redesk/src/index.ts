@@ -273,6 +273,166 @@ import { updateDevisdmgLine } from './lib/actions/update-devisdmg-line';
 import { deleteDevisdmgLine } from './lib/actions/delete-devisdmg-line';
 import { setDevisdmgInvoiced } from './lib/actions/set-devisdmg-invoiced';
 
+// Actions — Tâches
+import { getTask } from './lib/actions/get-task';
+import { listTasks } from './lib/actions/list-tasks';
+import { createTask } from './lib/actions/create-task';
+import { updateTask } from './lib/actions/update-task';
+import { deleteTask } from './lib/actions/delete-task';
+import { getTaskLines } from './lib/actions/get-task-lines';
+import { addTaskLine } from './lib/actions/add-task-line';
+import { addTaskTimespent } from './lib/actions/add-task-timespent';
+
+// Actions — Mouvements de stock
+import { getStockMovement } from './lib/actions/get-stock-movement';
+import { listStockMovements } from './lib/actions/list-stock-movements';
+import { createStockMovement } from './lib/actions/create-stock-movement';
+
+// Actions — Notes de frais
+import { getExpenseReport } from './lib/actions/get-expense-report';
+import { listExpenseReports } from './lib/actions/list-expense-reports';
+import { createExpenseReport } from './lib/actions/create-expense-report';
+import { updateExpenseReport } from './lib/actions/update-expense-report';
+import { deleteExpenseReport } from './lib/actions/delete-expense-report';
+import { validateExpenseReport } from './lib/actions/validate-expense-report';
+import { getExpenseReportLines } from './lib/actions/get-expense-report-lines';
+import { addExpenseReportLine } from './lib/actions/add-expense-report-line';
+import { updateExpenseReportLine } from './lib/actions/update-expense-report-line';
+import { deleteExpenseReportLine } from './lib/actions/delete-expense-report-line';
+
+// Actions — Adhérents
+import { getMember } from './lib/actions/get-member';
+import { listMembers } from './lib/actions/list-members';
+import { createMember } from './lib/actions/create-member';
+import { updateMember } from './lib/actions/update-member';
+import { deleteMember } from './lib/actions/delete-member';
+import { getMemberSubscriptions } from './lib/actions/get-member-subscriptions';
+import { createMemberSubscription } from './lib/actions/create-member-subscription';
+
+// Actions — Types d'adhérents
+import { getMemberType } from './lib/actions/get-member-type';
+import { listMemberTypes } from './lib/actions/list-member-types';
+import { createMemberType } from './lib/actions/create-member-type';
+import { updateMemberType } from './lib/actions/update-member-type';
+import { deleteMemberType } from './lib/actions/delete-member-type';
+
+// Actions — Cotisations
+import { getSubscription } from './lib/actions/get-subscription';
+import { listSubscriptions } from './lib/actions/list-subscriptions';
+import { createSubscription } from './lib/actions/create-subscription';
+import { updateSubscription } from './lib/actions/update-subscription';
+import { deleteSubscription } from './lib/actions/delete-subscription';
+
+// Actions — Devis fournisseur
+import { getSupplierProposal } from './lib/actions/get-supplier-proposal';
+import { listSupplierProposals } from './lib/actions/list-supplier-proposals';
+
+// Actions — Fiches d'intervention
+import { getIntervention } from './lib/actions/get-intervention';
+import { listInterventions } from './lib/actions/list-interventions';
+import { createIntervention } from './lib/actions/create-intervention';
+import { deleteIntervention } from './lib/actions/delete-intervention';
+import { validateIntervention } from './lib/actions/validate-intervention';
+import { closeIntervention } from './lib/actions/close-intervention';
+import { getInterventionLines } from './lib/actions/get-intervention-lines';
+import { addInterventionLine } from './lib/actions/add-intervention-line';
+
+// Actions — Nomenclatures (BOM)
+import { getBom } from './lib/actions/get-bom';
+import { listBoms } from './lib/actions/list-boms';
+import { createBom } from './lib/actions/create-bom';
+import { updateBom } from './lib/actions/update-bom';
+import { deleteBom } from './lib/actions/delete-bom';
+import { getBomLines } from './lib/actions/get-bom-lines';
+import { addBomLine } from './lib/actions/add-bom-line';
+import { updateBomLine } from './lib/actions/update-bom-line';
+import { deleteBomLine } from './lib/actions/delete-bom-line';
+
+// Actions — Ordres de fabrication (MO)
+import { getMo } from './lib/actions/get-mo';
+import { listMos } from './lib/actions/list-mos';
+import { createMo } from './lib/actions/create-mo';
+import { updateMo } from './lib/actions/update-mo';
+import { deleteMo } from './lib/actions/delete-mo';
+
+// Actions — Réceptions
+import { getReception } from './lib/actions/get-reception';
+import { listReceptions } from './lib/actions/list-receptions';
+import { createReception } from './lib/actions/create-reception';
+import { updateReception } from './lib/actions/update-reception';
+import { deleteReception } from './lib/actions/delete-reception';
+import { validateReception } from './lib/actions/validate-reception';
+import { closeReception } from './lib/actions/close-reception';
+import { getReceptionLines } from './lib/actions/get-reception-lines';
+import { addReceptionLine } from './lib/actions/add-reception-line';
+import { updateReceptionLine } from './lib/actions/update-reception-line';
+import { deleteReceptionLine } from './lib/actions/delete-reception-line';
+
+// Actions — Dons
+import { getDonation } from './lib/actions/get-donation';
+import { listDonations } from './lib/actions/list-donations';
+import { createDonation } from './lib/actions/create-donation';
+import { updateDonation } from './lib/actions/update-donation';
+import { deleteDonation } from './lib/actions/delete-donation';
+import { validateDonation } from './lib/actions/validate-donation';
+
+// Actions — Devises
+import { getCurrency } from './lib/actions/get-currency';
+import { listCurrencies } from './lib/actions/list-currencies';
+import { createCurrency } from './lib/actions/create-currency';
+import { updateCurrency } from './lib/actions/update-currency';
+import { deleteCurrency } from './lib/actions/delete-currency';
+
+// Actions — Recrutement
+import { getJobPosition } from './lib/actions/get-job-position';
+import { listJobPositions } from './lib/actions/list-job-positions';
+import { createJobPosition } from './lib/actions/create-job-position';
+import { updateJobPosition } from './lib/actions/update-job-position';
+import { deleteJobPosition } from './lib/actions/delete-job-position';
+import { getCandidature } from './lib/actions/get-candidature';
+import { listCandidatures } from './lib/actions/list-candidatures';
+import { createCandidature } from './lib/actions/create-candidature';
+import { updateCandidature } from './lib/actions/update-candidature';
+import { deleteCandidature } from './lib/actions/delete-candidature';
+
+// Actions — Base de connaissances
+import { getKnowledgeRecord } from './lib/actions/get-knowledge-record';
+import { listKnowledgeRecords } from './lib/actions/list-knowledge-records';
+import { createKnowledgeRecord } from './lib/actions/create-knowledge-record';
+import { updateKnowledgeRecord } from './lib/actions/update-knowledge-record';
+import { deleteKnowledgeRecord } from './lib/actions/delete-knowledge-record';
+
+// Actions — Documents
+import { listDocuments } from './lib/actions/list-documents';
+import { uploadDocument } from './lib/actions/upload-document';
+import { deleteDocument } from './lib/actions/delete-document';
+import { buildDocument } from './lib/actions/build-document';
+
+// Actions — Paramétrage
+import { getSetupCompany } from './lib/actions/get-setup-company';
+import { listSetupCountries } from './lib/actions/list-setup-countries';
+import { listSetupCurrencies } from './lib/actions/list-setup-currencies';
+import { listSetupPaymentTypes } from './lib/actions/list-setup-payment-types';
+import { listSetupContactTypes } from './lib/actions/list-setup-contact-types';
+import { listSetupEventTypes } from './lib/actions/list-setup-event-types';
+import { listSetupTicketTypes } from './lib/actions/list-setup-ticket-types';
+import { listSetupTicketCategories } from './lib/actions/list-setup-ticket-categories';
+import { listSetupTicketSeverities } from './lib/actions/list-setup-ticket-severities';
+
+// Actions — ROs (Redesk)
+import { getRo } from './lib/actions/get-ro';
+import { listRos } from './lib/actions/list-ros';
+import { createRo } from './lib/actions/create-ro';
+import { updateRo } from './lib/actions/update-ro';
+import { deleteRo } from './lib/actions/delete-ro';
+
+// Actions — Partenariats
+import { getPartnership } from './lib/actions/get-partnership';
+import { listPartnerships } from './lib/actions/list-partnerships';
+import { createPartnership } from './lib/actions/create-partnership';
+import { updatePartnership } from './lib/actions/update-partnership';
+import { deletePartnership } from './lib/actions/delete-partnership';
+
 // Triggers — Tiers & Contacts
 import { newThirdParty } from './lib/triggers/new-third-party';
 import { thirdPartyModified } from './lib/triggers/third-party-modified';
@@ -576,6 +736,147 @@ export const dolibarrRedesk = createPiece({
     updateDevisdmgLine,
     deleteDevisdmgLine,
     setDevisdmgInvoiced,
+    // Tâches
+    getTask,
+    listTasks,
+    createTask,
+    updateTask,
+    deleteTask,
+    getTaskLines,
+    addTaskLine,
+    addTaskTimespent,
+    // Mouvements de stock
+    getStockMovement,
+    listStockMovements,
+    createStockMovement,
+    // Notes de frais
+    getExpenseReport,
+    listExpenseReports,
+    createExpenseReport,
+    updateExpenseReport,
+    deleteExpenseReport,
+    validateExpenseReport,
+    getExpenseReportLines,
+    addExpenseReportLine,
+    updateExpenseReportLine,
+    deleteExpenseReportLine,
+    // Adhérents
+    getMember,
+    listMembers,
+    createMember,
+    updateMember,
+    deleteMember,
+    getMemberSubscriptions,
+    createMemberSubscription,
+    // Types d'adhérents
+    getMemberType,
+    listMemberTypes,
+    createMemberType,
+    updateMemberType,
+    deleteMemberType,
+    // Cotisations
+    getSubscription,
+    listSubscriptions,
+    createSubscription,
+    updateSubscription,
+    deleteSubscription,
+    // Devis fournisseur
+    getSupplierProposal,
+    listSupplierProposals,
+    // Fiches d'intervention
+    getIntervention,
+    listInterventions,
+    createIntervention,
+    deleteIntervention,
+    validateIntervention,
+    closeIntervention,
+    getInterventionLines,
+    addInterventionLine,
+    // Nomenclatures (BOM)
+    getBom,
+    listBoms,
+    createBom,
+    updateBom,
+    deleteBom,
+    getBomLines,
+    addBomLine,
+    updateBomLine,
+    deleteBomLine,
+    // Ordres de fabrication (MO)
+    getMo,
+    listMos,
+    createMo,
+    updateMo,
+    deleteMo,
+    // Réceptions
+    getReception,
+    listReceptions,
+    createReception,
+    updateReception,
+    deleteReception,
+    validateReception,
+    closeReception,
+    getReceptionLines,
+    addReceptionLine,
+    updateReceptionLine,
+    deleteReceptionLine,
+    // Dons
+    getDonation,
+    listDonations,
+    createDonation,
+    updateDonation,
+    deleteDonation,
+    validateDonation,
+    // Devises
+    getCurrency,
+    listCurrencies,
+    createCurrency,
+    updateCurrency,
+    deleteCurrency,
+    // Recrutement
+    getJobPosition,
+    listJobPositions,
+    createJobPosition,
+    updateJobPosition,
+    deleteJobPosition,
+    getCandidature,
+    listCandidatures,
+    createCandidature,
+    updateCandidature,
+    deleteCandidature,
+    // Base de connaissances
+    getKnowledgeRecord,
+    listKnowledgeRecords,
+    createKnowledgeRecord,
+    updateKnowledgeRecord,
+    deleteKnowledgeRecord,
+    // Documents
+    listDocuments,
+    uploadDocument,
+    deleteDocument,
+    buildDocument,
+    // Paramétrage
+    getSetupCompany,
+    listSetupCountries,
+    listSetupCurrencies,
+    listSetupPaymentTypes,
+    listSetupContactTypes,
+    listSetupEventTypes,
+    listSetupTicketTypes,
+    listSetupTicketCategories,
+    listSetupTicketSeverities,
+    // ROs (Redesk)
+    getRo,
+    listRos,
+    createRo,
+    updateRo,
+    deleteRo,
+    // Partenariats
+    getPartnership,
+    listPartnerships,
+    createPartnership,
+    updatePartnership,
+    deletePartnership,
     // Appel API personnalisé
     createCustomApiCallAction({
       baseUrl: (auth) => (auth as unknown as { props: { base_url: string } }).props.base_url,
